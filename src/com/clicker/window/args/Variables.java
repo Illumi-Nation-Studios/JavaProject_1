@@ -13,11 +13,17 @@ public class Variables {
 	// Initial Variables
 	public static int width = 720;
 	public static int height = width / 16 * 9;
-	public static int tFrames;
+	public int tFrames;
 	public static String title = "Clicker Game";
 
+	// Key Variables
+	public String keyLeft = "Left";
+	public String keyRight = "Right";
+	public String keyUp = "Up";
+	public String keyDown = "Down";
+
 	// Components
-	public static Graphics graphics;
+	public Graphics graphics;
 	public static Thread thread;
 	public static Keyboard k;
 	public static Window window;
