@@ -3,6 +3,7 @@ package com.clicker.window;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
@@ -62,7 +63,7 @@ public class Window extends Canvas implements Runnable {
 
 			if (System.currentTimeMillis() - v.timer > 1000) {
 				v.timer += 1000;
-				Variables.tFrames = v.frames;
+				v.tFrames = v.frames;
 				v.updates = 0;
 				v.frames = 0;
 			}
@@ -75,21 +76,26 @@ public class Window extends Canvas implements Runnable {
 	}
 
 	public void render() {
-		BufferStrategy bs = getBufferStrategy();
-		if (bs == null) {
+		Variables.bs = getBufferStrategy();
+		if (Variables.bs == null) {
 			createBufferStrategy(3);
 			return;
 		}
+		
+		Graphics g = Variables.bs.getDrawGraphics();
 
-		Graphics g = bs.getDrawGraphics();
+		g.setFont(v.Monospaced);
+		
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, getWidth(), getHeight());
 
 		g.setColor(Color.black);
-		g.drawString("Frames: " + Variables.tFrames / 10, 0, 10);
-
+		g.drawString("Frames: " + v.tFrames / 10, 0, 10);
+		
+		Variables.ui.render();
+		
 		g.dispose();
-		bs.show();
+		Variables.bs.show();
 	}
 
 	public static void main(String[] args) {
@@ -99,6 +105,7 @@ public class Window extends Canvas implements Runnable {
 		window.frame.setTitle(Variables.title);
 		window.frame.add(window);
 		window.frame.pack();
+		window.frame.setBackground(Color.white);
 		window.frame.setLocationRelativeTo(null);
 		window.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.frame.setVisible(true);
