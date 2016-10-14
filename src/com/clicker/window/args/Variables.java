@@ -1,6 +1,9 @@
 package com.clicker.window.args;
 
+import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.image.BufferStrategy;
+import java.util.Random;
 
 import javax.swing.JFrame;
 
@@ -14,7 +17,15 @@ public class Variables {
 	public static int width = 720;
 	public static int height = width / 16 * 9;
 	public int tFrames;
-	public static String title = "Clicker Game";
+	public static String title = "JavaProject_1";
+	public static int fontHeight = 12;
+	public static int fontStyle = 0;
+	
+	// Font Variables
+	public Font Helvetica = new Font("Helvetica", fontStyle, fontHeight);
+	public Font Times = new Font("Times", fontStyle, fontHeight);
+	public Font Serif = new Font("Serif", fontStyle, fontHeight);
+	public Font Monospaced = new Font("Monospaced", fontStyle, fontHeight);
 
 	// Key Variables
 	public String keyLeft = "Left";
@@ -29,6 +40,8 @@ public class Variables {
 	public static Window window;
 	public static JFrame frame;
 	public static WindowUI ui;
+	public static BufferStrategy bs;
+	public static Random random;
 
 	// Frame Limiter Variables
 	public long lastTime = System.nanoTime();
